@@ -87,5 +87,8 @@ def _build_fact_callbacks_and_doc_strings():
 (_callbacks, _doc_strings) = _build_fact_callbacks_and_doc_strings()
 
 # Append the doc string (__doc__) with the documentation for each fact.
-for key in sorted(_doc_strings, key=lambda s: s.lower()):
-    __doc__ += ':%s:\n  %s\n' % (key, _doc_strings[key])
+try:
+    for key in sorted(_doc_strings, key=lambda s: s.lower()):
+        __doc__ += ':%s:\n  %s\n' % (key, _doc_strings[key])
+except TypeError:
+    pass
